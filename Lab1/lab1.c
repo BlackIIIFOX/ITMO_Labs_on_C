@@ -252,15 +252,11 @@ void ReadAndPrintFromStreamAsCat(int file_descriptor)
 	while(1)
 	{
 		char ch;
-		int stateRead = read(file_descriptor, &ch, 1);
-
-		if (stateRead == 0)
+		int readingSsuccessful = read(file_descriptor, &ch, 1);
+		
+		if (readingSsuccessful)
 		{
-			// 0 - завершение ввода в поток с помощью ctrl-D.
-			break;
-		}
-		else
-		{
+			// Если чтение прошло успешно, то.
 			if (ch == '\n')
 			{
 				// Если встречается символ перевода на следующую строку, то выполняем печать и очищаем StringBuilder.
@@ -273,6 +269,11 @@ void ReadAndPrintFromStreamAsCat(int file_descriptor)
 				char stringArray[] = { ch, '\0'};
 				sb_append(stringBuilderInputRead, stringArray);
 			}
+		}
+		else
+		{
+			// 0 - завершение ввода в поток с помощью ctrl-D.
+			break;
 		}
 	}
 
