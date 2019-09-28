@@ -93,6 +93,7 @@ int main(int argc, char const *argv[])
 						write(STDOUT_FILENO, INVALID_OPTION_BEGIN, strlen(INVALID_OPTION_BEGIN));
 						write(STDOUT_FILENO, &param[1], strlen(param) - 1);
 						write(STDOUT_FILENO, INVALID_OPTION_END, strlen(INVALID_OPTION_END));
+						exit(1);
 					}
 					else
 					{
