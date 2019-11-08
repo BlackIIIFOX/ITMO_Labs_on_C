@@ -2,3 +2,13 @@
 Lab2/Part1/.vscode/launch.json
 
 Lab2/Part2/invert
+
+*.o
+
+Lab1/my_cat
+
+Lab1/my_xargs
+
+Lab2/Part3/client
+
+Lab2/Part3/server
