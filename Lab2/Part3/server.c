@@ -47,8 +47,17 @@ int main()
 	}
 
 	if (listen(fd_socket, LISTEN_BACKLOG) == -1)
-               handle_error("listen");
+	{
+		handle_error("Exception: Failed init listen");
+    }
+
 	fcntl(fd_socket, F_SETFL, fcntl(fd_socket, F_GETFL) | O_NONBLOCK);
+
+	int enable = 1;
+	if (setsockopt(fd_socket, SOL_SOCKET, SO_REUSEADDR, &enable, sizeof(int)) < 0)
+	{
+		handle_error("Exception: Failed setsockopt");
+	}
 
 	while(1) 
     {
